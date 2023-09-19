@@ -32,8 +32,7 @@ def index():
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, token: str = Query(...)):
-    openai_api_key = os.getenv("OPEN_AI_API_KEY")
-    # Assume some code here to set up your OpenAI API usage with the obtained API key
+    openai.api_key = os.getenv("OPEN_AI_API_KEY")
 
     await websocket.accept()
     while True:
